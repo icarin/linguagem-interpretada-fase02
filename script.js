@@ -1,8 +1,57 @@
+// //section da api de preços
+// const priceUrl = 'https://www.cheapshark.com/api/1.0/games?title=';
 
+// function searchPrice(){
+
+// }
 //section da api de games info
 const apiKey = '7c3ab28bec964f1abe8c837c7803eec8';
-
 const urlGames = `https://api.rawg.io/api/games?key=${apiKey}`;
+const gamesRow = document.getElementById('games-row');
+
+fetch(urlGames).then(response => {
+    if(!response.ok){
+        throw new Error(`Erro de rede: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    console.log('data recieved succesfully!', data);
+
+    const games = data.results;
+
+    gamesRow.innerHTML = '';
+
+    for(var i = 0; i < 18; i++){
+        
+        const imageUrl = games[i].background_image;
+
+        const cardHTML = `
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="${imageUrl}" class="card-img-top h-75" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${games[i].name}</h5>
+                            <p class="card-text">Game price</p>
+                            <a href="#" class="btn btn-primary">add to cart</a>
+                        </div>
+                    </div>
+                </div>
+        `;
+
+                gamesRow.innerHTML += cardHTML;
+
+    };
+
+})
+.catch(error => {
+    console.error('There was an error:', error);
+});
+
+
+
+
+
 
 
 // const cepInput = document.getElementById("cep");
