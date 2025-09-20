@@ -33,7 +33,6 @@ fetch(urlGames).then(response => {
                         <img src="${imageUrl}" class="card-img-top card-img-uniform" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${games[i].name}</h5>
-                            <p class="card-text">Game price</p>
                             <a href="#" class="btn btn-primary">add to cart</a>
                         </div>
                         </a>

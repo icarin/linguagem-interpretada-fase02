@@ -10,17 +10,22 @@ async function loadGameDetails(){
 
     try{
         const apiGames = await fetch(`https://api.rawg.io/api/games/${gameId}?key=${apiKey}`);
-        if(!apiGames.ok) throw new Error('Error while trying to search details on API.');
+        if(!apiGames.ok) throw new Error('Error while trying to search details on API(games).');
         const game = await apiGames.json();
 
         const gameName = game.name;
+
+        const priceReponse = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(gameName)}`);
+        if(!priceReponse.ok) throw new Error('Error while trying to search details on API(price).');
+        const price = await priceReponse.json();
 
         document.getElementById('game-title').textContent = game.name;
         document.getElementById('game-image').src = game.background_image;
         document.getElementById('game-release-date').textContent = new Date(game.released).toLocaleDateString('pt-BR');
         document.getElementById('game-rating').textContent = game.rating;
-        // document.getElementById('game-price').textContent = g
 
+        document.getElementById('game-price').textContent = price[0].cheapest;
+    
         document.getElementById('game-description').innerHTML = game.description;
     
     } catch (error){
