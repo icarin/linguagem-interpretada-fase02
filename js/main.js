@@ -5,9 +5,18 @@
 
 // }
 //section da api de games info
+
+
 const apiKey = '7c3ab28bec964f1abe8c837c7803eec8';
 const urlGames = `https://api.rawg.io/api/games?key=${apiKey}`;
 const gamesRow = document.getElementById('games-row');
+
+class jogo {
+    #nome;
+    #img;
+    
+}
+
 
 fetch(urlGames).then(response => {
     if(!response.ok){

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saci Games :: Carrinho</title>
+    <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <div class="d-flex gap-3">
+                    <a class="navbar-brand d-flex col gap-3" href="main.html">
+                        <img class="altura-20" src="assets/saci-logo.png" alt="">
+                        Saci Games
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                    aria-label="Toggle navigation" onclick="window.location.href='checkout.html'">
+                    <img id="img-carrinho" class="altura-20 img-invert" src="assets/carrinho.png" alt="carrinho de compras">
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main class="mt-5 mx-md-5">
+        <div class="container-checkout d-flex">
+            <!-- RESUMO DO CARRINHO --> 
+            <div class="resumo bg-light d-flex col-10 col-md-5 m-5 shadow p-2 rounded">
+                <ul class="list-group gap-1">
+                    <!-- CARD DO PRODUTO -->
+                    <li class="card list-group-item py-3">
+                        <div class="row g-3">
+
+                            <!-- IMAGEM -->
+                            <div class="col-3">
+                                <a href="#">
+                                    <img src="data:image/jpeg;base64,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" 
+                                    class="img-fluid" alt="img teste">
+                                </a>
+                            </div>
+
+                            <!-- DESCRICAO-->
+                            <div class="col-6">
+                                <h4><b><a href="#" class="text-decoration-none text-danger">Produto Teste</a></b></h4>
+                                <p><small>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                </small></p>
+                            </div>
+
+                            <!-- BOTOES -->
+                            <div class="col-3 pt-4">
+                                <div class="d-flex justify-content-center">
+                                        <div class="input-group input-group-sm" style="width: 110px;">
+                                        <button type="button" class="btn btn-outline-dark">
+                                            <svg width="16" height="16" fill="currentColor">
+                                                <use xlink:href="bi.svg#caret-down"></use>
+                                            </svg>
+                                        </button>
+                                        <input type="text" class="form-control text-center border-dark" value="1">
+                                        <button type="button" class="btn btn-outline-dark">
+                                            <svg width="16" height="16" fill="currentColor">
+                                                <use xlink:href="bi.svg#caret-up"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Botão de excluir -->
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-outline-danger btn-sm border-dark mt-2">
+                                        <svg width="12" height="16" fill="currentColor">
+                                            <use xlink:href="bi.svg#trash"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="text-right mt-2">
+                                    <small class="text-secondary">Valor por item: R$ 3,99</small> <br>
+                                    <span class="text-dark">Valor total: 3,99</span>
+                                </div>   
+                            </div>
+                            
+                        </div>
+                    </li>
+                    <li class="card list-group-item py-3">
+                        <div class="row g-3">
+
+                            <!-- IMAGEM -->
+                            <div class="col-3">
+                                <a href="#">
+                                    <img src="data:image/jpeg;base64,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" 
+                                    class="img-fluid" alt="img teste">
+                                </a>
+                            </div>
+
+                            <!-- DESCRICAO-->
+                            <div class="col-6">
+                                <h4><b><a href="#" class="text-decoration-none text-danger">Produto Teste</a></b></h4>
+                                <p><small>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                </small></p>
+                            </div>
+
+                            <!-- BOTOES -->
+                            <div class="col-3 pt-4">
+                                <div class="d-flex justify-content-center">
+                                        <div class="input-group input-group-sm" style="width: 110px;">
+                                        <button type="button" class="btn btn-outline-dark">
+                                            <svg width="16" height="16" fill="currentColor">
+                                                <use xlink:href="bi.svg#caret-down"></use>
+                                            </svg>
+                                        </button>
+                                        <input type="text" class="form-control text-center border-dark" value="1">
+                                        <button type="button" class="btn btn-outline-dark">
+                                            <svg width="16" height="16" fill="currentColor">
+                                                <use xlink:href="bi.svg#caret-up"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Botão de excluir -->
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-outline-danger btn-sm border-dark mt-2">
+                                        <svg width="12" height="16" fill="currentColor">
+                                            <use xlink:href="bi.svg#trash"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="text-right mt-2">
+                                    <small class="text-secondary">Valor por item: R$ 3,99</small> <br>
+                                    <span class="text-dark">Valor total: 3,99</span>
+                                </div>   
+                            </div>
+                            
+                        </div>
+                    </li>
+                    <li class="card list-group-item py-3">
+                        <div class="row g-3">
+
+                            <!-- IMAGEM -->
+                            <div class="col-3">
+                                <a href="#">
+                                    <img src="data:image/jpeg;base64,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" 
+                                    class="img-fluid" alt="img teste">
+                                </a>
+                            </div>
+
+                            <!-- DESCRICAO-->
+                            <div class="col-6">
+                                <h4><b><a href="#" class="text-decoration-none text-danger">Produto Teste</a></b></h4>
+                                <p><small>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                </small></p>
+                            </div>
+
+                            <!-- BOTOES -->
+                            <div class="col-3 pt-4">
+                                <div class="d-flex justify-content-center">
+                                        <div class="input-group input-group-sm" style="width: 110px;">
+                                        <button type="button" class="btn btn-outline-dark">
+                                            <svg width="16" height="16" fill="currentColor">
+                                                <use xlink:href="bi.svg#caret-down"></use>
+                                            </svg>
+                                        </button>
+                                        <input type="text" class="form-control text-center border-dark" value="1">
+                                        <button type="button" class="btn btn-outline-dark">
+                                            <svg width="16" height="16" fill="currentColor">
+                                                <use xlink:href="bi.svg#caret-up"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Botão de excluir -->
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-outline-danger btn-sm border-dark mt-2">
+                                        <svg width="12" height="16" fill="currentColor">
+                                            <use xlink:href="bi.svg#trash"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="text-right mt-2">
+                                    <small class="text-secondary">Valor por item: R$ 3,99</small> <br>
+                                    <span class="text-dark">Valor total: 3,99</span>
+                                </div>   
+                            </div>
+                            
+                        </div>
+                    </li>
+                    <li class="list-group-item py-3">
+                        <div class="d-grid justify-content-end">
+                            <div class="col text-end">
+                                <h4 class="text-dark mb-3">Valor Total: R$ XX,XX</h4>
+                            </div>
+                            <div class="col text-end">
+                                <a href="/main.html" class="btn btn-outline-success">Continuar comprando</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- FORMULARIO -->
+            <div class="formulario d-flex m-5 p-5 shadow bg-light rounded col-md-6" style="height: 50%;">
+                <form class="row g-4">
+                    <!-- EMAIL -->
+                    <div class="col-md-4">
+                      <label for="inputEmail" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="inputEmail">
+                    </div>
+                    <!-- ENDEREÇO -->
+                    <div class="col-md-6">
+                      <label for="inputAddress" class="form-label">Endereço</label>
+                      <input type="text" class="form-control" id="inputAdress">
+                    </div>
+                    <!-- NUMERO -->
+                    <div class="col">
+                      <label for="inputNumber" class="form-label">Numero</label>
+                      <input type="number" class="form-control" id="inputNumber">
+                    </div>
+                    <!-- COMPLEMENTO -->
+                    <div class="col-md-4">
+                      <label for="inputAddress2" class="form-label">Complemento</label>
+                      <input type="text" class="form-control" id="inputAddress2">
+                    </div>
+                    <!-- BAIRRO -->
+                    <div class="col-md-3">
+                      <label for="inputNeighborhood" class="form-label">Bairro</label>
+                      <input type="text" class="form-control" id="inputNeighborhood">
+                    </div>
+                    <!-- CIDADE -->
+                    <div class="col-md-5">
+                      <label for="inputCity" class="form-label">Cidade</label>
+                      <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <!-- ESTADO -->
+                    <div class="col-md-3">
+                      <label for="inputState" class="form-label">Estado</label>
+                      <select id="inputState" class="form-select">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <!-- CEP -->
+                    <div class="col-md-3">
+                      <label for="inputZip" class="form-label">CEP</label>
+                      <input type="text" class="form-control" id="inputZip">
+                    </div>
+                    <!-- BOTAO -->
+                    <div class="botao col-12">
+                        <button type="submit "class="btn btn-danger">Fechar Compra</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center"> <a href="/"
+                class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1" aria-label="Bootstrap"> <svg
+                    class="bi" width="30" height="24" aria-hidden="true">
+                    <use xlink:href="#bootstrap"></use>
+                </svg> </a> <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Saci Games, Inc</span> </div>
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-body-secondary" href="#" aria-label="Instagram"><svg class="bi" width="24"
+                        height="24" aria-hidden="true">
+                        <use xlink:href="#instagram"></use>
+                    </svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#" aria-label="Facebook"><svg class="bi" width="24"
+                        height="24">
+                        <use xlink:href="#facebook"></use>
+                    </svg></a></li>
+        </ul>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/checkout.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>

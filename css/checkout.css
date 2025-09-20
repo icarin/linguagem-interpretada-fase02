@@ -1,0 +1,11 @@
+.altura-20 {
+    height: 40px;
+}
+
+.resumo{
+    width: 50%;
+}
+
+.img-invert {
+    filter: invert(1);
+}

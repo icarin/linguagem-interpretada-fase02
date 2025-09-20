@@ -1,3 +1,11 @@
+.altura-20 {
+    height: 40px;
+}
+
+.img-invert {
+    filter: invert(1);
+}
+
 .grid-games{
     display: grid;
 }
