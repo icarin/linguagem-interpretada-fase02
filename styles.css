@@ -33,3 +33,49 @@
     display: flex;
     flex-direction: column;
 }
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-game {
+    border-radius: 10px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+
+
+body {
+    background: linear-gradient(to bottom, #ffffff, #000000); 
+    color: #F5F5F5;
+}
+
+section {
+    padding-top: 1px; 
+    padding-bottom: 1px; 
+}
+:root {
+  --text-light: #ffffff; 
+  --text-dark: #000000; 
+}
+#details {
+    display: flex;
+    flex-direction: row;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+}
+footer {
+    background-color: var(--text-dark);
+}
+
+footer .text-body-secondary {
+    color: var(--text-light) !important;
+}
+
+
+
+
+
