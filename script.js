@@ -28,13 +28,15 @@ fetch(urlGames).then(response => {
 
         const cardHTML = `
                 <div class="col">
-                    <div class="card h-100">
-                        <img src="${imageUrl}" class="card-img-top h-75" alt="...">
+                    <div class="card h-100 shadow-sm card-game">
+                        <a href="game-details.html?game_id=${games[i].id}" class="card-link-wrapper">
+                        <img src="${imageUrl}" class="card-img-top card-img-uniform" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${games[i].name}</h5>
                             <p class="card-text">Game price</p>
                             <a href="#" class="btn btn-primary">add to cart</a>
                         </div>
+                        </a>
                     </div>
                 </div>
         `;
