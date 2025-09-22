@@ -1,18 +1,56 @@
-const carrinhoDeCompras = [];
+import { carrinhoDeCompras } from "./details.js";
 
-function verificarCarrinho(){
-    if(carrinhoDeCompras.length >= 1){
-        let imgLink = document.getElementById("img-carrinho");
+function atualizarCarrinho(carrinho){
+    let container = document.querySelector(".container-lista")
+    
+    container.innerHTML = ""
 
-        imgLink.setAttribute("src", "./assets/carrinho-cheio.png");
-    } else {
-        let imgLink = document.getElementById("img-carrinho");
+    carrinho.array.forEach(game => {
+        container.innerHTML += `
+                    <li class="card list-group-item py-3">
+                        <div class="row g-3">
 
-        imgLink.setAttribute("src", "./assets/carrinho.png");
-    }
+                            <!-- IMAGEM -->
+                            <div class="col-3">
+                                <a href="#">
+                                    <img src="${game.background_image}" 
+                                    class="img-fluid" alt="img teste">
+                                </a>
+                            </div>
+
+                            <!-- DESCRICAO-->
+                            <div class="col-6">
+                                <h4><b><a href="#" class="text-decoration-none text-danger">${game.name}</a></b></h4>
+                                <p><small>${game.description}
+                                </small></p>
+                            </div>
+
+                            <!-- BOTOES -->
+                            <div class="col-3 pt-4">
+                                <div class="d-flex justify-content-center">
+                                        <div class="input-group input-group-sm" style="width: 110px;">
+                                        <input type="text" class="form-control text-center border-dark" value="${game.quantity}">
+                                    </div>
+                                </div>
+                                <!-- Botão de excluir -->
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-outline-danger btn-sm border-dark mt-2" onclick="removerDoCarrinho(${game.id})">
+                                        <img src="./assets/delete.png" style="height: 20px;" alt="botão de excluir">
+                                    </button>
+                                </div>
+                                <div class="text-right mt-2">
+                                    <small class="text-secondary">Valor por item: R$ ${game.price}</small> <br>
+                                    <span class="text-dark">Valor total: R$ ${game.quantity * game.price}</span>
+                                </div>   
+                            </div>
+                            
+                        </div>
+                    </li>
+        `
+    });
 };
 
-window.onload = verificarCarrinho;
+atualizarCarrinho(carrinhoDeCompras);
 
 function aplicarMobile(mobile){
     if (mobile.matches){

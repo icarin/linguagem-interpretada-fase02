@@ -11,13 +11,6 @@ const apiKey = '7c3ab28bec964f1abe8c837c7803eec8';
 const urlGames = `https://api.rawg.io/api/games?key=${apiKey}`;
 const gamesRow = document.getElementById('games-row');
 
-class jogo {
-    #nome;
-    #img;
-    
-}
-
-
 fetch(urlGames).then(response => {
     if(!response.ok){
         throw new Error(`Erro de rede: ${response.status}`);
@@ -42,10 +35,10 @@ fetch(urlGames).then(response => {
                         <img src="${imageUrl}" class="card-img-top card-img-uniform" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${games[i].name}</h5>
-                            <a href="#" class="btn btn-primary">add to cart</a>
+                            <button class="btn btn-primary">Add to Cart</button>
                         </div>
-                        </a>
-                    </div>
+
+                    </div>                        </a>
                 </div>
         `;
 
@@ -57,12 +50,6 @@ fetch(urlGames).then(response => {
 .catch(error => {
     console.error('There was an error:', error);
 });
-
-
-
-
-
-
 
 // const cepInput = document.getElementById("cep");
     // const ruaInput = document.getElementById("rua");

@@ -1,5 +1,19 @@
 const apiKey = '7c3ab28bec964f1abe8c837c7803eec8';
 
+const carrinhoDeCompras = [];
+
+function verificarCarrinho() {
+    let imgLink = document.getElementById("img-carrinho");
+
+    if (carrinhoDeCompras.length >= 1) {
+        imgLink.setAttribute("src", "./assets/carrinho-cheio.png");
+    } else {
+        imgLink.setAttribute("src", "./assets/carrinho.png");
+    }
+};
+
+window.onload = verificarCarrinho();
+
 async function loadGameDetails(){
     const urlParams = new URLSearchParams(window.location.search);
     const gameId = urlParams.get('game_id');
@@ -27,10 +41,53 @@ async function loadGameDetails(){
         document.getElementById('game-price').textContent = price[0].cheapest;
     
         document.getElementById('game-description').innerHTML = game.description;
-    
+        
+        document.querySelector(".addCart").addEventListener("click", () => { adicionarAoCarrinho(game.id, game.name, game.background_image, price[0].cheapest, game.description)});
+
     } catch (error){
         console.error(error);
     }
-}
+};
 
 window.onload = loadGameDetails;
+
+function adicionarAoCarrinho(id, name, img, price ,description){
+    const game = {
+        id,
+        name,
+        img,
+        price,
+        description,
+        quantity: 1
+    }
+
+    const itemExistente = carrinhoDeCompras.find(carrinhoDeCompras => carrinhoDeCompras.id === id);
+
+    if(itemExistente){
+        itemExistente.quantity++
+    } else {
+        carrinhoDeCompras.push(game);
+    }
+
+    notificacao("Item adicionado ao carrinho com sucesso!");
+};
+
+function removerDoCarrinho(id){
+    const index = carrinhoDeCompras.findIndex(game => game.id === id);
+
+    if (id > -1) {
+        carrinhoDeCompras.splice(id, 1);
+        notificacao("Item retirado com sucesso!")
+    };
+};
+
+function notificacao(msg){
+    const notificacao = document.createElement("div");
+    notificacao.className = "notificacao btn btn-danger";
+    notificacao.textContent = msg;
+    document.body.appendChild(notificacao);
+
+    setTimeout(() => {
+        notificacao.remove()
+    }, 2 * 1000);
+};

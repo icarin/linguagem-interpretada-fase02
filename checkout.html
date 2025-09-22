@@ -29,7 +29,7 @@
         <div class="container-checkout d-flex">
             <!-- RESUMO DO CARRINHO --> 
             <div class="resumo bg-light d-flex col-10 col-md-5 m-5 shadow p-2 rounded">
-                <ul class="list-group gap-1">
+                <ul class="container-lista list-group gap-1">
                     <!-- CARD DO PRODUTO -->
                     <li class="card list-group-item py-3">
                         <div class="row g-3">
@@ -171,9 +171,7 @@
                                 <!-- Botão de excluir -->
                                 <div class="d-flex justify-content-center">
                                     <button type="button" class="btn btn-outline-danger btn-sm border-dark mt-2">
-                                        <svg width="12" height="16" fill="currentColor">
-                                            <use xlink:href="bi.svg#trash"></use>
-                                        </svg>
+                                        <img src="./assets/delete.png" style="height: 20px;" alt="botão de excluir">
                                     </button>
                                 </div>
                                 <div class="text-right mt-2">
@@ -268,7 +266,7 @@
         </ul>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="js/checkout.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script src="js/checkout.js" type="module" defer></script>
+    <script src="js/details.js" defer></script>
 </body>
 </html>
