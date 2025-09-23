@@ -41,7 +41,7 @@ function atualizarCarrinho(carrinho) {
         container.innerHTML += `
             <li class="card list-group-item py-3 mb-3">
                 <div class="row g-3 align-items-center">
-                    <div class="col-4 col-md-3">
+                    <div class="col-5 col-md-3">
                         <a href="game-details.html?game_id=${game.id}">
                             <img src="${game.img}" class="img-fluid" alt="${game.name}">
                         </a>
@@ -72,9 +72,16 @@ function atualizarCarrinho(carrinho) {
     
     if (totalGeral > 0) {
         totalContainer.innerHTML = `
-            <div class="text-end mt-4">
-                <h3>Total da Compra: <span class="text-success">R$ ${totalGeral.toFixed(2)}</span></h3>
-            </div>
+            <li class="list-group-item py-3">
+                <div class="d-grid justify-content-end">
+                    <div class="col text-center">
+                        <h4 class="text-dark mb-3">Valor Total: <br> <span class="text-success">R$ ${totalGeral.toFixed(2)}</span></h4>
+                    </div>
+                    <div class="col text-end">
+                        <a href="/main.html" class="btn btn-outline-success">Continuar comprando</a>
+                    </div>
+                </div>
+            </li>
         `;
     } else {
         totalContainer.innerHTML = "";
@@ -89,9 +96,81 @@ function atualizarCarrinho(carrinho) {
     });
 }
 
-
 const carrinhoDeCompras = getCarrinho();
 atualizarCarrinho(carrinhoDeCompras);
+
+function limpa_formulário_cep() {
+        
+    document.getElementById('rua').value=("");
+    document.getElementById('bairro').value=("");
+    document.getElementById('cidade').value=("");
+    document.getElementById('uf').value=("");
+    document.getElementById('ibge').value=("");
+};
+
+function meu_callback(conteudo) {
+    if (!("erro" in conteudo)) {
+        
+        document.getElementById('inputAdress').value=(conteudo.logradouro);
+        document.getElementById('inputNeighborhood').value=(conteudo.bairro);
+        document.getElementById('inputCity').value=(conteudo.localidade);
+        document.getElementById('inputState').value=(conteudo.uf);
+    }
+    else {
+        
+        limpa_formulário_cep();
+        notificacao("CEP não encontrado.");
+    }
+};
+    
+function pesquisacep(valor) {
+    
+    var cep = valor.replace(/\D/g, '');
+    
+    if (cep != "") {
+        
+        var validacep = /^[0-9]{8}$/;
+        
+        if(validacep.test(cep)) {
+            
+            document.getElementById('inputAdress').value="...";
+            document.getElementById('inputNeighborhood').value="...";
+            document.getElementById('inputCity').value="...";
+            document.getElementById('inputState').value="...";
+            
+            var script = document.createElement('script');
+            
+            script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+            
+            document.body.appendChild(script);
+        }
+        else {
+            
+            limpa_formulário_cep();
+            alert("Formato de CEP inválido.");
+        }
+    } 
+    else {
+        
+        limpa_formulário_cep();
+    }
+};
+
+const inputCep = document.getElementById("inputZip");
+
+inputCep.addEventListener("input", () => {
+    let cep = inputCep.value.replace(/\D/g, "");
+
+    if (cep.length > 5) {
+        cep = cep.replace(/(\d{5})(\d)/, "$1-$2")
+    }
+
+    if (cep.length > 2) {
+        cep = cep.replace(/(\d{2})(\d)/, "$1.$2")
+    }
+
+    inputCep.value = cep;
+});
 
 function aplicarMobile(mobile){
     if (mobile.matches){
