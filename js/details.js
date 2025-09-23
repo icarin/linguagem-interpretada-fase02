@@ -69,6 +69,7 @@ function adicionarAoCarrinho(id, name, img, price ,description){
         carrinhoDeCompras.push(game);
     }
 
+    verificarCarrinho();
     notificacao("Item adicionado ao carrinho com sucesso!");
 };
 
