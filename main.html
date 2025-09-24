@@ -10,29 +10,6 @@
 </head>
 
 <body>
-    <!-- \<section id="endereco"></section>
-
-    <form id="formEndereco">
-
-        <label for="cep">CEP:</label>
-        <input type="text" id="cep" maxlength="9" placeholder="00000-000">
-
-        <label for="rua">Rua:</label>
-        <input type="text" id="rua" disabled>
-
-        <label for="bairro">Bairro:</label>
-        <input type="text" id="bairro" disabled>
-
-        <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" disabled>
-
-        <label for="uf">UF:</label>
-        <input type="text" id="uf" maxlength="2" disabled>
-
-        <div id="mensagem"></div>
-
-    </form>
-    </section> -->
     <header>
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
@@ -88,6 +65,45 @@
             </button>
         </div>
     </section>
+
+    <!-- BARRA DE FILTRAGEM -->
+    <div class="d-flex justify-content-center py-3">
+        <form class="d-flex" role="search">
+            <input id="barraDePesquisa" class="form-control me-2" style="width: 30vh;" type="search" placeholder="Grand theft Auto" aria-label="Search"/>
+            
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Filtros
+            </button>
+        </form>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <div class="text-center">
+                    <h6>Genero</h6>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                    <label class="form-check-label" for="checkDefault">
+                        Ação
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                    <label class="form-check-label" for="checkDefault">
+                        Aventura
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                    <label class="form-check-label" for="checkDefault">
+                        RPG
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- HUB DOS JOGOS -->
     <div class="container text-center p-4">

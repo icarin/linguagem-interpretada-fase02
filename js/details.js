@@ -30,7 +30,7 @@ function adicionarAoCarrinho(id, name, img, price, description) {
     
     saveCarrinho(carrinho);
     verificarCarrinho();
-    notificacao("Item adicionado ao carrinho com sucesso!");
+    notificacao("Item adicionado ao carrinho com sucesso!", "btn-success");
 }
 
 async function loadGameDetails() {
@@ -76,9 +76,9 @@ async function loadGameDetails() {
 
 window.onload = loadGameDetails;
 
-function notificacao(msg) {
+function notificacao(msg, cor) {
     const notificacao = document.createElement("div");
-    notificacao.className = "notificacao btn btn-success"; 
+    notificacao.classList.add("notificacao", "btn", cor);
     notificacao.textContent = msg;
     document.body.appendChild(notificacao);
 

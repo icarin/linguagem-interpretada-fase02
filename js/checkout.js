@@ -1,18 +1,38 @@
 function getCarrinho() {
     const carrinho = localStorage.getItem('carrinho');
     return carrinho ? JSON.parse(carrinho) : [];
-}
+};
 
 function saveCarrinho(carrinho) {
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
-}
+};
 
 function removerDoCarrinho(id) {
     let carrinho = getCarrinho();
     const novoCarrinho = carrinho.filter(game => game.id !== Number(id));
     saveCarrinho(novoCarrinho);
     atualizarCarrinho(novoCarrinho); 
-}
+};
+
+function aumentarQuantidade(id) {
+    let carrinho = getCarrinho();
+    const jogo = carrinho.find(game => game.id === Number(id));
+    if (jogo) {
+        jogo.quantity += 1;
+    }
+    saveCarrinho(carrinho);
+    atualizarCarrinho(carrinho);
+};
+
+function diminuirQuantidade(id) {
+    let carrinho = getCarrinho();
+    const jogo = carrinho.find(game => game.id === Number(id));
+    if (jogo && jogo.quantity > 1) {
+        jogo.quantity -= 1;
+    }
+    saveCarrinho(carrinho);
+    atualizarCarrinho(carrinho);
+};
 
 function atualizarCarrinho(carrinho) {
     let container = document.querySelector(".container-lista");
@@ -54,14 +74,25 @@ function atualizarCarrinho(carrinho) {
                     </div>
 
                     <div class="col-12 col-md-4 d-flex justify-content-end align-items-center">
+                        <button type="button" class="btn btn-outline-dark btn-sm border-dark me-2 btn-diminuir" data-game-id="${game.id}">
+                            <img src="./assets/minusIcon.png" style="height: 20px;" alt="botão de diminuir" class="pe-none">
+                        </button>
+                        
                         <div class="input-group input-group-sm" style="width: 100px;">
                             <input type="text" class="form-control text-center border-dark" value="${game.quantity}" readonly>
                         </div>
+
+                        <button type="button" class="btn btn-outline-dark btn-sm border-dark ms-2 btn-aumentar" data-game-id="${game.id}">
+                            <img src="./assets/plusIcon.png" style="height: 20px;" alt="botão de aumentar" class="pe-none">
+                        </button>
                         
+                        
+                    </div>
+                    <div class="d-grid justify-content-end">
                         <button type="button" class="btn btn-outline-danger btn-sm border-dark ms-2 btn-remover" data-game-id="${game.id}">
                             <img src="./assets/delete.png" style="height: 20px;" alt="botão de excluir" class="pe-none">
                         </button>
-                    </div>
+                    </div> 
                 </div>
             </li>
         `;
@@ -73,7 +104,7 @@ function atualizarCarrinho(carrinho) {
     if (totalGeral > 0) {
         totalContainer.innerHTML = `
             <li class="list-group-item py-3">
-                <div class="d-grid justify-content-end">
+                <div class="d-grid justify-content-center">
                     <div class="col text-center">
                         <h4 class="text-dark mb-3">Valor Total: <br> <span class="text-success">R$ ${totalGeral.toFixed(2)}</span></h4>
                     </div>
@@ -88,6 +119,20 @@ function atualizarCarrinho(carrinho) {
     }
     container.parentNode.appendChild(totalContainer);
 
+    document.querySelectorAll('.btn-aumentar').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const gameId = event.currentTarget.getAttribute('data-game-id');
+            aumentarQuantidade(gameId);
+        });
+    });
+
+    document.querySelectorAll('.btn-diminuir').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const gameId = event.currentTarget.getAttribute('data-game-id');
+            diminuirQuantidade(gameId);
+        });
+    });
+
     document.querySelectorAll('.btn-remover').forEach(button => {
         button.addEventListener('click', (event) => {
             const gameId = event.currentTarget.getAttribute('data-game-id');
@@ -101,11 +146,10 @@ atualizarCarrinho(carrinhoDeCompras);
 
 function limpa_formulário_cep() {
         
-    document.getElementById('rua').value=("");
-    document.getElementById('bairro').value=("");
-    document.getElementById('cidade').value=("");
-    document.getElementById('uf').value=("");
-    document.getElementById('ibge').value=("");
+    document.getElementById('inputAdress').value=("");
+    document.getElementById('inputNeighborhood').value=("");
+    document.getElementById('inputCity').value=("");
+    document.getElementById('inputState').value=("");
 };
 
 function meu_callback(conteudo) {
@@ -147,7 +191,7 @@ function pesquisacep(valor) {
         else {
             
             limpa_formulário_cep();
-            alert("Formato de CEP inválido.");
+            notificacao("Formato de CEP inválido.", "btn-danger");
         }
     } 
     else {
@@ -171,6 +215,17 @@ inputCep.addEventListener("input", () => {
 
     inputCep.value = cep;
 });
+
+function notificacao(msg) {
+    const notificacao = document.createElement("div");
+    notificacao.classList.add("notificacao", "btn", "btn-danger")
+    notificacao.textContent = msg;
+    document.body.appendChild(notificacao);
+
+    setTimeout(() => {
+        notificacao.remove();
+    }, 2000);
+}
 
 function aplicarMobile(mobile){
     if (mobile.matches){

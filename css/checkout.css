@@ -9,3 +9,17 @@
 .img-invert {
     filter: invert(1);
 }
+
+.notificacao {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--cor-button);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    animation: fadeIn 0.3s, fadeOut 0.3s 1.7s;
+    z-index: 1002;
+}
