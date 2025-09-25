@@ -65,13 +65,6 @@ section {
     display: flex;
     flex-direction: column;
 }
-footer {
-    background-color: var(--text-dark);
-}
-
-footer .text-body-secondary {
-    color: var(--text-light) !important;
-}
 
 .notificacao {
     position: fixed;
