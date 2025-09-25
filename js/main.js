@@ -3,6 +3,7 @@ const urlGames = `https://api.rawg.io/api/games?key=${apiKey}`;
 const gamesRow = document.getElementById('games-row');
 let games = [];
 const barraDePesquisa = document.getElementById("barraDePesquisa");
+const checkboxes = document.querySelectorAll(".filtro-checkbox");
 
 function getCarrinho() {
     const carrinho = localStorage.getItem('carrinho');
@@ -81,7 +82,7 @@ function redenrizarCards(games){
                     </a>
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${games[i].name}</h5>
-                        <button class="btn btn-primary btn-add-to-cart mt-auto" data-game-index="${i}">Add to Cart</button>
+                        <button class="btn btn-danger btn-add-to-cart mt-auto" data-game-index="${i}">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -105,6 +106,26 @@ barraDePesquisa.addEventListener("keyup", () => {
     });
 
     redenrizarCards(gamesFiltrados);
+});
+
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener("change", () => {
+        
+        const checkboxesMarcados = document.querySelectorAll(".filtro-checkbox:checked");
+        const generos = Array.from(checkboxesMarcados).map(cb => cb.value);
+
+        let gamesFiltrados = [];
+
+        if (generos.length === 0){
+            gamesFiltrados = games;
+        } else {
+            gamesFiltrados = games.filter(game => {
+                return game.genres.some(genre => generos.includes(genre.name));
+            });
+        }
+
+        redenrizarCards(gamesFiltrados);
+    });
 });
 
 function notificacao(msg, cor) {

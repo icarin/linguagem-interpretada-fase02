@@ -14,7 +14,7 @@
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
                 <div class="d-flex gap-3">
-                    <a class="navbar-brand d-flex col gap-3" href="main.html">
+                    <a class="navbar-brand d-flex col gap-3" href="index.html">
                         <img class="altura-20" src="assets/saci-logo.png" alt="">
                         Saci Games
                     </a>
@@ -71,37 +71,38 @@
         <form class="d-flex" role="search">
             <input id="barraDePesquisa" class="form-control me-2" style="width: 30vh;" type="search" placeholder="Grand theft Auto" aria-label="Search"/>
             
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 Filtros
             </button>
         </form>
     </div>
     <div class="d-flex justify-content-center">
         <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                <div class="text-center">
-                    <h6>Genero</h6>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                    <label class="form-check-label" for="checkDefault">
-                        Ação
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                    <label class="form-check-label" for="checkDefault">
-                        Aventura
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                    <label class="form-check-label" for="checkDefault">
-                        RPG
-                    </label>
+            <div class="card card-body gap-2">
+                <div>
+                    <div class="text-center">
+                        <h6>Genero</h6>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input filtro-checkbox" type="checkbox" value="Action" id="checkAction">
+                        <label class="form-check-label" for="checkDefault">
+                            Ação
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input filtro-checkbox" type="checkbox" value="Shooter" id="checkShooter">
+                        <label class="form-check-label" for="checkDefault">
+                            Tiro
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input filtro-checkbox" type="checkbox" value="Adventure" id="checkAdventure">
+                        <label class="form-check-label" for="checkDefault">
+                            Aventura
+                        </label>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -112,22 +113,9 @@
             </div>
     </div>
 
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <div class="col-md-4 d-flex align-items-center"> <a href="/"
-                class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1" aria-label="Bootstrap"> <svg
-                    class="bi" width="30" height="24" aria-hidden="true">
-                    <use xlink:href="#bootstrap"></use>
-                </svg> </a> <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Saci Games, Inc</span> </div>
-        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-body-secondary" href="#" aria-label="Instagram"><svg class="bi" width="24"
-                        height="24" aria-hidden="true">
-                        <use xlink:href="#instagram"></use>
-                    </svg></a></li>
-            <li class="ms-3"><a class="text-body-secondary" href="#" aria-label="Facebook"><svg class="bi" width="24"
-                        height="24">
-                        <use xlink:href="#facebook"></use>
-                    </svg></a></li>
-        </ul>
+    <footer class="d-flex justify-content-between align-items-center py-3">
+        <div class="col-md-4 d-flex align-items-center">  
+            <span class="mb-3 mb-md-0 ms-3 text-body-secondary">© 2025 Saci Games, Inc</span> </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
