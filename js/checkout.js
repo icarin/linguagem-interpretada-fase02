@@ -109,7 +109,7 @@ function atualizarCarrinho(carrinho) {
                         <h4 class="text-dark mb-3">Valor Total: <br> <span class="text-success">R$ ${totalGeral.toFixed(2)}</span></h4>
                     </div>
                     <div class="col text-end">
-                        <a href="/main.html" class="btn btn-outline-success">Continuar comprando</a>
+                        <a href="index.html" class="btn btn-outline-success">Continuar comprando</a>
                     </div>
                 </div>
             </li>
